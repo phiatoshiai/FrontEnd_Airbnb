@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TokenStorageService } from '../services/token-storage.service';
 import { AuthUserService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
+  userSocial: SocialUser;
+  
   private roles: string[];
   public authority: string;
 
@@ -19,6 +21,7 @@ export class HomePageComponent implements OnInit {
   @Input() receiveStatus: boolean;
 
   ngOnInit() {
+    
 
     if (this.tokenStorage.getToken()) {
       this.roles = this.tokenStorage.getAuthorities();
@@ -58,5 +61,6 @@ export class HomePageComponent implements OnInit {
         });
     }
   }
+  
 }
 

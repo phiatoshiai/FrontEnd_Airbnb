@@ -408,3 +408,10 @@ button, input {
 .mb--18 {
   margin-bottom: 18px!important;
 }
+
+footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
+}

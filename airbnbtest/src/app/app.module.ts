@@ -21,13 +21,18 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { BookingComponent } from './customer/booking/booking.component';
 import { EditProfileComponent } from './customer/edit-profile/edit-profile.component';
-import { ChangePasswordComponent } from './customer/change-password/change-password.component';
 import { EditAccountComponent } from './customer/edit-account/edit-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { LoginFBComponent } from './login-fb/login-fb.component';
 import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { HeaderComponent } from './frame/header/header.component';
+import { FooterComponent } from './frame/footer/footer.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { HistoryForRentComponent } from './user/history-for-rent/history-for-rent.component';
+import { HistoryRentComponent } from './user/history-rent/history-rent.component';
+import { ResultViewComponent } from './user/result-view/result-view.component';
 
 
 const config = new AuthServiceConfig([
@@ -68,7 +73,12 @@ export function provideConfig() {
     EditProfileComponent,
     ChangePasswordComponent,
     EditAccountComponent,
-    LoginFBComponent,
+    EditUserComponent,
+    HeaderComponent,
+    FooterComponent,
+    HistoryForRentComponent,
+    HistoryRentComponent,
+    ResultViewComponent,
   ],
   imports: [
     BrowserModule,

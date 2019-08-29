@@ -5,6 +5,7 @@ export class SignUpFb {
     role: string[];
     password: string;
     providerLogin: string;
+    image: string;
 
     constructor() {
         this.role = ['user'];

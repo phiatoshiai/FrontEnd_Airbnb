@@ -1,9 +1,9 @@
-export class User {
-    id: number
+export class UserForService {
+ 
     name: string;
     username: string;
-    password: string;
     email: string; 
+    password: string;
     image: string;
     roles: string[];
 }

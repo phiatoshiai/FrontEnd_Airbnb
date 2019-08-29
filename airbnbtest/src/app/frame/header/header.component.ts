@@ -1,16 +1,16 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
-import { AuthUserService } from '../services/auth.service';
-import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user.model';
+import { AuthUserService } from 'src/app/services/auth.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   info: any;
   userForService: User;
   private ts:Subscription;
@@ -85,5 +85,6 @@ export class HomeComponent implements OnInit {
         });
     }
   }
+
 
 }

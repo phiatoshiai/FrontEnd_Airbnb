@@ -11,7 +11,6 @@ import { AuthLoginInfo } from '../models/login-info';
 import { AuthService } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
-import { User } from '../models/user.model';
 import { SignUpFb } from '../models/sign-up-fb';
 
 @Component({
@@ -72,13 +71,45 @@ export class LoginComponent implements OnInit {
       this.newUser.username = emailTemp;
       this.newUser.name = this.user.name;
       this.newUser.role = ['user'];
+      this.newUser.providerLogin = this.user.provider;
+      this.newUser.image = this.user.photoUrl;
+
       console.log(this.newUser.email);
       console.log(this.newUser.password);
       console.log(this.newUser.username);
       console.log(this.newUser.name);
       console.log(this.newUser.role);
+      console.log(this.newUser.providerLogin);
+       //service
+       this.authUserService.signUpFb(this.newUser).subscribe();
+       this.loginInfoSocial = new AuthLoginInfo(
+         this.newUser.username,
+         this.newUser.password
+         );
+ 
+ 
+       //log info and go to home
+       console.log("Log info")
+       console.log(this.newUser.username)
+       console.log(this.newUser.password)
+       console.log("LOgin")
+       this.authUserService.attemptAuth(this.loginInfoSocial).subscribe(
+         data => {
+             this.tokenStorage.saveToken(data.accessToken);
+             this.tokenStorage.saveUsername(data.username);
+             this.tokenStorage.saveAuthorities(data.authorities);
+             this.isLoginFailed = false;
+             this.isLoggedIn = true;
+             this.roles = this.tokenStorage.getAuthorities();
+             this.reloadPage();
+         },
+         error => {
+           this.isLoginFailed = true;
+           this.loading = false;
+           console.log("error")
+         }
+       );
     }
-
     );
   }
 
@@ -94,7 +125,9 @@ export class LoginComponent implements OnInit {
       this.newUser.username = emailTemp;
       this.newUser.name = this.user.name;
       this.newUser.providerLogin = this.user.provider;
-      // this.newUser.role = ['user'];
+      this.newUser.role = ['user'];
+      this.newUser.image = this.user.photoUrl;
+
       console.log(this.newUser.email);
       console.log(this.newUser.password);
       console.log(this.newUser.username);

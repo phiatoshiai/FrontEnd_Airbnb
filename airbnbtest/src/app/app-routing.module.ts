@@ -14,8 +14,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { BookingComponent } from './customer/booking/booking.component';
 import { EditProfileComponent } from './customer/edit-profile/edit-profile.component';
-import { ChangePasswordComponent } from './customer/change-password/change-password.component';
 import { EditAccountComponent } from './customer/edit-account/edit-account.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { HistoryForRentComponent } from './user/history-for-rent/history-for-rent.component';
+import { HistoryRentComponent } from './user/history-rent/history-rent.component';
+import { ResultViewComponent } from './user/result-view/result-view.component';
+
 
 
 const routes: Routes = [
@@ -60,18 +65,30 @@ const routes: Routes = [
                 component: BookingComponent,
             },
             {
+                path: 'history-for-rent',
+                component: HistoryForRentComponent,
+            },
+            {
+                path: 'history-rent',
+                component: HistoryRentComponent,
+            },
+            {
+                path: 'result-view',
+                component: ResultViewComponent,
+            },
+            {
                 path: 'edit-account',
-                component: EditAccountComponent,
+                component: EditUserComponent,
                 children: [
                     {
                         path: 'profile',
                         component: EditProfileComponent,
                     },
-                    {
-                        path: 'change-password',
-                        component: ChangePasswordComponent,
-                    },
                 ]
+            },
+            {
+                path: 'change-password',
+                component: ChangePasswordComponent,
             },
 
         ]

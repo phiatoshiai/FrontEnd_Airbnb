@@ -63,6 +63,10 @@ export class AuthUserService {
     const id = decoded.sub;
     return this.http.get<User>(`${this.userUrl}/${id}`, httpOptions);     
   }
+   getUserByName(userName: string): Observable<User>{
+    
+    return this.http.get<User>(`${this.userUrl}/name/${userName}`, httpOptions);
+  }
 
   updatePassword(id: number, newPass: string, oldPass: string) {
     return this.http.put(`${this.editUrl}/${id}`, {newPass: newPass, oldPass: oldPass});
